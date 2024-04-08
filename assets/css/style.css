@@ -197,6 +197,7 @@ button, a { transition: var(--transition); }
   left: 0;
   width: 0;
   height: 100%;
+  border-radius: 10px;
   background: var(--white);
   transition: var(--transition);
   z-index: -1;
@@ -271,7 +272,13 @@ button, a { transition: var(--transition); }
 
 
 
-
+/* 
+.span{
+  background: linear-gradient(45deg, rgb(0, 0, 0), rgb(0, 0, 0));
+   -webkit-background-clip: text; 
+   color: transparent; 
+   text-shadow: 0 0px 100px rgba(27, 27, 27, 0.623);
+} */
 
 /*-----------------------------------*\
   #HEADER
@@ -349,7 +356,7 @@ button, a { transition: var(--transition); }
   font-size: 15px;
 }
 
-@media(max-width: 680px){
+@media(max-width: 766px){
   .header-top-social-link {
     display: none;
   }
@@ -362,6 +369,10 @@ button, a { transition: var(--transition); }
   color: white;
   padding: 8px;
   border-radius: 10px;
+}
+
+.header-top{
+  display: none;
 }
 }
 
@@ -417,11 +428,20 @@ button, a { transition: var(--transition); }
   border-bottom: 1px solid var(--cultured-1);
   margin-bottom: 25px;
 }
+/* 
+.navbar-bottom{
+  background: black;
+  padding: 10px;
+  border-radius: 10px;
+} */
 
 .navbar-top .logo img { width: 200px; }
 
 .nav-close-btn ion-icon {
   font-size: 20px;
+  background: black;
+  color: white;
+  border-radius: 10px;
   --ionicon-stroke-width: 45px;
   padding: 5px;
 }
@@ -452,31 +472,46 @@ button, a { transition: var(--transition); }
 }
 
 .header-bottom-actions {
-  background: var(--white);
+  background: var(--black);
   position: fixed;
   bottom: 0;
+  right: 0;
+  margin: 10px;
+  border-radius: 10px;
   left: 0;
-  width: 100%;
+  width: wrap;
   display: flex;
   justify-content: space-evenly;
   padding-block: 15px 10px;
-  box-shadow: -2px 0 30px hsla(237, 71%, 52%, 0.2);
+  box-shadow: 0 2px 50px hsla(0, 0%, 0%, 0.322);
   z-index: 3;
 }
 
 .header-bottom-actions-btn ion-icon {
-  color: hsl(0, 0%, 10%);
+  color: hsl(0, 0%, 6%);
   font-size: 20px;
   margin-inline: auto;
   margin-bottom: 5px;
-  --ionicon-stroke-width: 40px;
+  --ionicon-stroke-width: 50px;
   transition: var(--transition);
+}
+
+@media (max-width: 680px){
+  
+.header-bottom-actions-btn ion-icon {
+  color: hsl(0, 0%, 97%);
+  font-size: 20px;
+  margin-inline: auto;
+  margin-bottom: 5px;
+  --ionicon-stroke-width: 50px;
+  transition: var(--transition);
+}
 }
 
 .header-bottom-actions-btn:is(:hover, :focus) ion-icon { color: var(--orange-soda); }
 
 .header-bottom-actions-btn span {
-  color: var(--cadet);
+  color: rgb(216, 216, 216);
   font-family: var(--ff-poppins);
   font-size: var(--fs-7);
   font-weight: var(--fw-500);
@@ -534,17 +569,50 @@ button, a { transition: var(--transition); }
   margin-bottom: 30px;
 }
 
-
+/* 
 #searchInput {
-  padding: 16px 40px; /* Adjust padding to accommodate icon */
+  padding: 16px 40px; 
   border: 3px solid #ffffff;
   border-radius: 10px;
   font-size: 16px;
-  width: 100% ;/* Adjust width as needed */
+  font-family: poppins;
+  width: 100% ;
   margin-bottom: 10px;
-  background-image: url('path/to/search-icon.png'); /* Replace 'path/to/search-icon.png' with the path to your search icon */
-  background-repeat: no-repeat;
-  background-position: 10px center; /* Adjust icon position */
+} */
+
+/* Search container styles */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Search input styles */
+#searchInput {
+  padding: 16px 40px; 
+  background: #ffffff;
+  border: 3px solid #ffffff;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: poppins;
+  width: 100% ;
+  margin-bottom: 10px;
+}
+
+/* Search icon styles */
+.search-icon {
+  position: absolute;
+  left: 10px; /* Adjust icon position */
+  top: 45%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: grey; /* Color of the icon */
+}
+
+.hero .btn{
+  border-radius: 10px;
+  background: black;
+  border: 3px solid black;
 }
 
 
@@ -578,7 +646,13 @@ button, a { transition: var(--transition); }
 .about .section-title {
   --text-align: left;
   --margin-bottom: 15px;
+
 }
+
+.about h2{
+  line-height: 1.0;
+}
+
 
 .about-text {
   color: var(--cadet);
