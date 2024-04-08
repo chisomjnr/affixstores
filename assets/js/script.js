@@ -59,3 +59,71 @@ document.addEventListener("DOMContentLoaded", function() {
     headerTop.classList.toggle("hidden");
   });
 });
+
+
+
+//popup
+document.addEventListener("DOMContentLoaded", () => {
+  const popup = document.getElementById("popup");
+  const closeButton = document.getElementById("closeButton");
+  const drawer = document.querySelector(".drawer");
+  let startDragY = 0;
+  let startY = 0;
+  let isScrolledToTop = true; 
+
+  // Function to show the popup
+  const showPopup = () => {
+      popup.classList.add("show");
+  };
+
+  // Function to hide the popup
+  const hidePopup = () => {
+      // popup.classList.add("hide"),
+      popup.style.animation = "slide-down 0.3s";
+      setTimeout(() => {
+          popup.remove();
+      }, 300);
+      // popup.classList.remove('show');
+  };
+
+
+ 
+
+  // Show the popup after 5 seconds
+  setTimeout(showPopup, 1800);
+
+  closeButton.addEventListener("click", () => {
+      hidePopup();
+  });
+
+  document.addEventListener("click", (event) => {
+      if (!popup.contains(event.target) && event.target !== closeButton) {
+          hidePopup();
+      }
+  });
+  
+
+  drawer.addEventListener("dragstart", (event) => {
+      startDragY = event.clientY;
+  });
+
+  drawer.addEventListener("dragend", (event) => {
+      const deltaY = event.clientY - startDragY;
+      startY = 0;
+      if (deltaY > 50) {
+          hidePopup();
+      }
+  });
+
+  drawer.addEventListener("drag", (event) => {
+      const deltaY = event.clientY - startDragY;
+      if (startY === 0) {
+          startY = popup.getBoundingClientRect().top;
+      }
+      popup.style.transform = `translateY(${startY + deltaY}px)`;
+  });
+
+
+
+});
+
